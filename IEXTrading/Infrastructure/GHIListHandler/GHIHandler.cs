@@ -20,40 +20,17 @@ namespace GHI.Infrastructure.GHIListHandler
             httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        /****
-         * Calls the IEX reference API to get the list of symbols. 
-        ****/
-        //public List<Hospital> Getpascodata()
-        //{
-        //    string IEXTrading_API_PATH = BASE_URL + "?$where=city='Tampa'";
-        //    string companyList = "";
-
-        //    List<Hospital> companies = null;
-
-        //    httpClient.BaseAddress = new Uri(IEXTrading_API_PATH);
-        //    HttpResponseMessage response = httpClient.GetAsync(IEXTrading_API_PATH).GetAwaiter().GetResult();
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        companyList = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-        //    }
-
-        //    if (!companyList.Equals(""))
-        //    {
-        //        companies = JsonConvert.DeserializeObject<List<Hospital>>(companyList);
-        //       // companies = companies.GetRange(0, 40);
-        //    }
-        //    return companies;
-        //}
+       
 
         public List<Hospital> GetFloridadata()
         {
-            string IEXTrading_API_PATH = BASE_URL + "?$where=state='FL'";
+            string GHIHospital_API_PATH = BASE_URL + "?$where=state='FL'";
             string companyList = "";
 
             List<Hospital> companies = null;
 
-            httpClient.BaseAddress = new Uri(IEXTrading_API_PATH);
-            HttpResponseMessage response = httpClient.GetAsync(IEXTrading_API_PATH).GetAwaiter().GetResult();
+            httpClient.BaseAddress = new Uri(GHIHospital_API_PATH);
+            HttpResponseMessage response = httpClient.GetAsync(GHIHospital_API_PATH).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
                 companyList = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
@@ -66,59 +43,7 @@ namespace GHI.Infrastructure.GHIListHandler
             }
             return companies;
         }
-        //public List<Hospital> Getpinellasdata()
-        //{
-        //    string IEXTrading_API_PATH = BASE_URL + "?$where=county_name='PINELLAS'";
-        //    string companyList = "";
-
-        //    List<Hospital> companies = null;
-
-        //    httpClient.BaseAddress = new Uri(IEXTrading_API_PATH);
-        //    HttpResponseMessage response = httpClient.GetAsync(IEXTrading_API_PATH).GetAwaiter().GetResult();
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        companyList = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-        //    }
-
-        //    if (!companyList.Equals(""))
-        //    {
-        //        companies = JsonConvert.DeserializeObject<List<Hospital>>(companyList);
-        //        // companies = companies.GetRange(0, 40);
-        //    }
-        //    return companies;
-        //}
-
-        /****
-         * Calls the IEX stock API to get 1 year's chart for the supplied symbol. 
-        ****/
-        //public List<Equity> GetChart(string symbol)
-        //{
-        //    //Using the format method.
-        //    //string IEXTrading_API_PATH = BASE_URL + "stock/{0}/batch?types=chart&range=1y";
-        //    //IEXTrading_API_PATH = string.Format(IEXTrading_API_PATH, symbol);
-
-        //    string IEXTrading_API_PATH = BASE_URL + "stock/" + symbol + "/batch?types=chart&range=1y";
-
-        //    string charts = "";
-        //    List<Equity> Equities = new List<Equity>();
-        //    httpClient.BaseAddress = new Uri(IEXTrading_API_PATH);
-        //    HttpResponseMessage response = httpClient.GetAsync(IEXTrading_API_PATH).GetAwaiter().GetResult();
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        charts = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-        //    }
-        //    if (!charts.Equals(""))
-        //    {
-        //        ChartRoot root = JsonConvert.DeserializeObject<ChartRoot>(charts, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-        //        Equities = root.chart.ToList();
-        //    }
-        //    //make sure to add the symbol the chart
-        //    foreach (Equity Equity in Equities)
-        //    {
-        //        Equity.symbol = symbol;
-        //    }
-
-        //    return Equities;
-        //}
+        
+        
     }
 }
